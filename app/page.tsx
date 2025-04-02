@@ -1,6 +1,31 @@
+'use client';
+import { useEffect, useState } from "react";
 import Image from "next/image";
 
 export default function Home() {
+  const [greeting, setGreeting] = useState<string | null>(null);
+  const [taskSuggestion, setTaskSuggestion] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchGreeting = async () => {
+      try {
+        const response = await fetch("/api/greeting");
+
+        if (!response.ok) {
+          throw new Error(`Failed to fetch greeting: ${response.statusText}`);
+        }
+
+        const data = await response.json();
+        setGreeting(data.greeting);
+        setTaskSuggestion(data.taskSuggestion);
+      } catch (error) {
+        console.error('Error fetching greeting:', error);
+      }
+    };
+
+    fetchGreeting();
+  }, []);
+
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <nav>
@@ -69,10 +94,9 @@ export default function Home() {
               {" "}page shows the current status of public areas.
             </li>
           </ol>
+          {greeting && <p className="mt-6 text-lg font-semibold">{greeting}</p>}
+          {taskSuggestion && <p className="text-md text-gray-700">{taskSuggestion}</p>}
         </div>
-
-
-
       </main>
       <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
         <a
