@@ -1,5 +1,8 @@
 import { NextResponse } from 'next/server';
 
+// This tells Vercel to use an edge function
+export const runtime = "edge";
+
 export async function GET() {
     const currentTime = new Date();
     const hour = currentTime.getHours();
