@@ -5,6 +5,7 @@ export default function Complaints() {
     const [complaints, setComplaints] = useState<
         { reported_by: string; category: string; details: string; status: string }[]
     >([]);
+    const [mostFrequentCategory, setMostFrequentCategory] = useState<string | null>(null);
     const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
     useEffect(() => {
@@ -17,7 +18,8 @@ export default function Complaints() {
                 }
 
                 const data = await response.json();
-                setComplaints(data);
+                setComplaints(data.complaints);
+                setMostFrequentCategory(data.mostFrequentCategory); // Set the most frequent category
             } catch (error) {
                 setErrorMessage("Failed to fetch complaints.");
             }
@@ -41,7 +43,15 @@ export default function Complaints() {
             </nav>
             <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-4xl">
                 <h1 className="text-2xl font-semibold text-gray-800 mb-6">Logged Complaints</h1>
+
+                {mostFrequentCategory && (
+                    <p className="text-gray-800 font-semibold mb-4">
+                        The most frequently logged complaint category is: <span className="text-blue-500">{mostFrequentCategory}</span>
+                    </p>
+                )}
+
                 {errorMessage && <div className="text-red-600 mb-4">{errorMessage}</div>}
+
                 {complaints.length === 0 ? (
                     <p className="text-gray-500">No complaints logged yet.</p>
                 ) : (

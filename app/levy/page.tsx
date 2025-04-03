@@ -16,6 +16,8 @@ export default function LevyStatus() {
         fetchLevyStatus();
     }, []);
 
+    const [unpaidCount, setUnpaidCount] = useState<number>(0);
+
     const fetchLevyStatus = async () => {
         try {
             const response = await fetch("/api/levies");
@@ -23,11 +25,18 @@ export default function LevyStatus() {
                 throw new Error("Failed to fetch levy status");
             }
             const data = await response.json();
-            setResidents(data);
+
+            // Ensure both residents and unpaid count are set
+            if (data.residents) {
+                setResidents(data.residents);
+            }
+            setUnpaidCount(data.total_unpaid || 0);
         } catch (error) {
             setErrorMessage("Error fetching levy status.");
         }
     };
+
+
 
     const toggleStatus = async (id: number) => {
         try {
@@ -68,6 +77,9 @@ export default function LevyStatus() {
                 </ul>
             </nav>
             <h1 className="text-3xl font-semibold text-gray-800">Levy Status</h1>
+            <h2 className="text-lg font-semibold text-red-600">
+                {unpaidCount} residents haven't paid their levies.
+            </h2>
             {errorMessage && <p className="text-red-600">{errorMessage}</p>}
             {residents.length === 0 ? (
                 <p>No levy data available.</p>

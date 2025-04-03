@@ -55,6 +55,7 @@ export default function Log() {
                     <label className="block">
                         <span className="text-gray-700">Complaint Category:</span>
                         <select name="category" required className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                            <option value="noise">Noise</option>
                             <option value="common_area">Common Area</option>
                             <option value="general">General</option>
                             <option value="committee_member">Committee Member Issue</option>
