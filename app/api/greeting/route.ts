@@ -1,10 +1,13 @@
+import { format } from 'date-fns-tz';
 import { NextResponse } from 'next/server';
 
 export const runtime = "edge";
 
 export async function GET() {
-    const currentTime = new Date();
-    const hour = currentTime.getHours();
+    const timeZone = 'Asia/Sydney'; // Adjust to the correct timezone
+    const currentTime = format(new Date(), 'HH', { timeZone });
+
+    const hour = parseInt(currentTime, 10);
     let greetingMessage = '';
     let taskMessage = '';
 
@@ -19,13 +22,8 @@ export async function GET() {
         taskMessage = 'Don’t forget to log any complaints you might have received today!';
     }
 
-    const response = NextResponse.json({
+    return NextResponse.json({
         greeting: greetingMessage,
         taskSuggestion: taskMessage,
     });
-
-    // Prevent caching by setting Cache-Control headers
-    response.headers.set('Cache-Control', 'no-store');
-
-    return response;
 }
