@@ -12,13 +12,13 @@ export async function GET() {
     let taskMessage = '';
     console.log('Current time in Sydney:', currentTime);
     if (hour < 12) {
-        greetingMessage = 'Good morning!';
+        greetingMessage = 'Good morning!' + hour;
         taskMessage = 'It’s a great time to check if there are any complaints logged by residents.';
     } else if (hour < 18) {
-        greetingMessage = 'Good afternoon!';
+        greetingMessage = 'Good afternoon!' + hour;
         taskMessage = 'Check the levy status of residents or update the common area maintenance schedule.';
     } else {
-        greetingMessage = 'Good evening!';
+        greetingMessage = 'Good evening!' + hour;
         taskMessage = 'Don’t forget to log any complaints you might have received today!';
     }
 
