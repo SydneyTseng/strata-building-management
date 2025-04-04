@@ -7,10 +7,5 @@
         "env": {
             "TEMP_VALUE": "value"
         }
-    },
-    "functions": {
-        "api/greeting/route.ts": {
-            "runtime": "edge"
-        }
     }
 }

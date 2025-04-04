@@ -19,7 +19,7 @@ export default function Complaints() {
 
                 const data = await response.json();
                 setComplaints(data.complaints);
-                setMostFrequentCategory(data.mostFrequentCategory); // Set the most frequent category
+                setMostFrequentCategory(data.mostFrequentCategory);
             } catch (error) {
                 setErrorMessage("No complaints");
             }

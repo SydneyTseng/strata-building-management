@@ -8,22 +8,22 @@ export default function Log() {
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
         const formData = new FormData(event.target as HTMLFormElement);
-        const data = Object.fromEntries(formData.entries()); // Convert FormData to a plain object
+        const data = Object.fromEntries(formData.entries());
 
         try {
             const response = await fetch("/api/complaints", {
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/json", // Set the content type to JSON
+                    "Content-Type": "application/json",
                 },
-                body: JSON.stringify(data), // Send data as JSON
+                body: JSON.stringify(data),
             });
 
             const result = await response.json();
             if (response.ok) {
-                setSuccessMessage(result.message); // Display success message
+                setSuccessMessage(result.message);
             } else {
-                setErrorMessage(result.error); // Display error message
+                setErrorMessage(result.error);
             }
         } catch (error) {
             setErrorMessage("Failed to log complaint.");

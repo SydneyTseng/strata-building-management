@@ -26,7 +26,6 @@ export default function LevyStatus() {
             }
             const data = await response.json();
 
-            // Ensure both residents and unpaid count are set
             if (data.residents) {
                 setResidents(data.residents);
             }
@@ -90,7 +89,6 @@ export default function LevyStatus() {
                             <li key={resident.id} className="flex justify-between py-4 px-4 items-center">
                                 <span className="text-lg font-medium text-gray-800">{resident.name}</span>
 
-                                {/* Status and Toggle Button in the Same Line */}
                                 <div className="flex items-center gap-2">
                                     <span
                                         className={`px-3 py-1 rounded-full text-sm font-semibold ${resident.status === "Paid"

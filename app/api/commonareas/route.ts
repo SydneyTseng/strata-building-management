@@ -7,12 +7,10 @@ let commonAreas = [
     { id: 4, floor: "Second Floor", name: "Bathroom", status: "Clean" }
 ];
 
-// GET: Fetch all common areas
 export async function GET(req: NextRequest) {
     return NextResponse.json(commonAreas, { status: 200 });
 }
 
-// PATCH: Update the status of a room
 export async function PATCH(req: NextRequest) {
     try {
         const body = await req.json();
@@ -29,7 +27,6 @@ export async function PATCH(req: NextRequest) {
             return NextResponse.json({ error: "Common area not found" }, { status: 404 });
         }
 
-        // Cycle through statuses: Clean → Almost → Dirty → Clean
         const statusCycle = ["Clean", "Almost", "Dirty"];
         const nextStatus = statusCycle[(statusCycle.indexOf(area.status) + 1) % statusCycle.length];
 
