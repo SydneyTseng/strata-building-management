@@ -14,14 +14,14 @@ export default function Complaints() {
                 const response = await fetch("/api/complaints");
 
                 if (!response.ok) {
-                    throw new Error(`Failed to fetch complaints: ${response.statusText}`);
+                    throw new Error(`Ｎo complaints: ${response.statusText}`);
                 }
 
                 const data = await response.json();
                 setComplaints(data.complaints);
                 setMostFrequentCategory(data.mostFrequentCategory); // Set the most frequent category
             } catch (error) {
-                setErrorMessage("Failed to fetch complaints.");
+                setErrorMessage("No complaints");
             }
         };
 
