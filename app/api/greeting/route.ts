@@ -4,13 +4,13 @@ import { NextResponse } from 'next/server';
 export const runtime = "edge";
 
 export async function GET() {
-    const timeZone = 'Asia/Sydney'; // Adjust to the correct timezone
+    const timeZone = 'Asia/Sydney';
     const currentTime = format(new Date(), 'HH', { timeZone });
 
     const hour = parseInt(currentTime, 10);
     let greetingMessage = '';
     let taskMessage = '';
-
+    console.log('Current time in Sydney:', currentTime);
     if (hour < 12) {
         greetingMessage = 'Good morning!';
         taskMessage = 'It’s a great time to check if there are any complaints logged by residents.';
