@@ -19,8 +19,13 @@ export async function GET() {
         taskMessage = 'Don’t forget to log any complaints you might have received today!';
     }
 
-    return NextResponse.json({
+    const response = NextResponse.json({
         greeting: greetingMessage,
         taskSuggestion: taskMessage,
     });
+
+    // Prevent caching by setting Cache-Control headers
+    response.headers.set('Cache-Control', 'no-store');
+
+    return response;
 }
