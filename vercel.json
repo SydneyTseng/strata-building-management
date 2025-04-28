@@ -9,7 +9,7 @@
         }
     },
     "functions": {
-        "api/php/rules/*.php": {
+        "api/rules.php": {
             "runtime": "vercel-php@0.6.1"
         }
     }
