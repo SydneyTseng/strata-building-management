@@ -72,6 +72,7 @@ export default function LevyStatus() {
                     <li><a href="/levy">Levy</a></li>
                     <li><a href="/complaints">Complaints</a></li>
                     <li><a href="/logcomplaints">Log Complaints</a></li>
+                    <li><a href="/residents">Residents Information</a></li>
                     <li><a href="/members">Committee Members</a></li>
                 </ul>
             </nav>

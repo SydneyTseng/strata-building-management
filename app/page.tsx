@@ -30,11 +30,13 @@ export default function Home() {
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <nav>
         <ul className="navbar">
+          <li><a href="/api/php/page">Building Rules</a></li>
           <li><a href="/api/redirect">Act</a></li>
           <li><a href="/commonarea">Common Areas</a></li>
           <li><a href="/levy">Levy</a></li>
           <li><a href="/complaints">Complaints</a></li>
           <li><a href="/logcomplaints">Log Complaints</a></li>
+          <li><a href="/residents">Residents Information</a></li>
           <li><a href="/members">Committee Members</a></li>
         </ul>
       </nav>
@@ -58,6 +60,13 @@ export default function Home() {
                 Committee Members
               </code>
               {" "} webpage to view the contact information of staff.
+            </li>
+            <li className="tracking-[-.01em]">
+              Get contact details of residents in {" "}
+              <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
+                Residents Information
+              </code>
+              {" "} page.
             </li>
             <li className="tracking-[-.01em]">
               Click{" "}
