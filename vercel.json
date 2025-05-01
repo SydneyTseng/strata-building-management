@@ -7,10 +7,5 @@
         "env": {
             "TEMP_VALUE": "value"
         }
-    },
-    "functions": {
-        "api/rules.php": {
-            "runtime": "vercel-php@0.6.1"
-        }
     }
 }
