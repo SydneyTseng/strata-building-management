@@ -1,10 +1,10 @@
 import Image from "next/image";
-import { Pool } from "pg"; // ✅ Correct: import Pool directly from 'pg'
+import { Pool } from "pg";
 
 const pool = new Pool({
-    connectionString: process.env.DATABASE_URL, // ✅ Make sure your Neon DB URL is set in .env
+    connectionString: process.env.DATABASE_URL,
     ssl: {
-        rejectUnauthorized: false, // ✅ Neon requires SSL but allows self-signed certs
+        rejectUnauthorized: false,
     },
 });
 

@@ -13,7 +13,6 @@ export default function LogComplaint() {
     const [successMessage, setSuccessMessage] = useState<string | null>(null);
     const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
-    // Load draft from cookie
     useEffect(() => {
         const saved = Cookies.get("complaintDraft");
         if (saved) {
@@ -26,9 +25,8 @@ export default function LogComplaint() {
         }
     }, []);
 
-    // Save to cookie on every change
     useEffect(() => {
-        Cookies.set("complaintDraft", JSON.stringify(formData), { expires: 1 }); // 1 day expiry
+        Cookies.set("complaintDraft", JSON.stringify(formData), { expires: 1 });
     }, [formData]);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
